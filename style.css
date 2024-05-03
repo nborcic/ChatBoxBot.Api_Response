@@ -1,0 +1,223 @@
+body {
+  font-family: Impact, "Arial Narrow Bold", sans-serif, Arial, sans-serif;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e3e3e3;
+}
+.chatArea {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  width: 70%;
+  border-radius: 10px;
+}
+.chatDisplay {
+  display: flex;
+
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+.chatInput {
+  display: flex;
+  flex-direction: column;
+}
+
+.outSideWall {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  height: 860px;
+  width: 1720px;
+  border-radius: 10px;
+}
+.contactsSideBar {
+  width: 40%;
+  height: 100%;
+  background-color: white;
+}
+
+.custom-search {
+  position: relative;
+  width: 100%;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.custom-search-input {
+  width: 100%;
+  height: 70px;
+  border: 1px solid #ccc;
+  border-radius: 100px;
+  padding: 10px 100px 10px 20px;
+  line-height: 1;
+  box-sizing: border-box;
+  outline: none;
+}
+.custom-search-botton {
+  position: absolute;
+  right: 3px;
+  top: 0px;
+  bottom: 0px;
+  border: 0;
+  background: #200c79;
+  color: #fff;
+  outline: none;
+  margin: 0;
+  padding: 10px 10px;
+  border-radius: 100px;
+  z-index: 2;
+  width: 120px;
+  height: 70px;
+  font-size: 25px;
+}
+.custom-search-botton:hover {
+  background: #1853e7;
+  font-size: larger;
+}
+
+.sideBarContact {
+  display: flex;
+  flex-direction: row;
+  border: #ffffff solid 1px;
+  height: 60px;
+  background-color: rgb(255, 255, 255);
+  border-bottom: 1px solid #dddada;
+  line-break: 50%;
+}
+
+.innerLogo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 50px;
+  height: 50px;
+}
+.imgLogo {
+  display: flex;
+  height: 40px;
+  width: 40px;
+}
+
+.biggText {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  font-size: larger;
+}
+
+.smallText {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  font-size: medium;
+}
+.chatDisplay {
+  display: flex;
+  flex: 1;
+  background-image: url("/Assets/whatsup-white.png");
+  flex-direction: row;
+}
+.leftDisplay {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  padding: 25px;
+  flex: 1;
+}
+.rightDisplay {
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+  align-items: flex-end;
+  flex-direction: column;
+  padding: 25px;
+}
+
+.navTop {
+  background-color: #c9cfd4;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.navIcons {
+  display: flex;
+  justify-items: center;
+  align-self: center;
+  padding-right: 25px;
+}
+
+.navImg {
+  display: flex;
+  justify-items: center;
+  align-self: center;
+  gap: 20px;
+  padding: 10px;
+}
+
+.navDivBottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 80%;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  margin: 0 auto;
+}
+
+.navInput {
+  display: flex;
+  justify-items: center;
+  align-self: center;
+  width: 100vw;
+  height: 80%;
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  padding: 10px;
+}
+
+.contactsNav {
+  background-color: rgb(255, 255, 255);
+}
+
+.topToolTips {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  background-color: #ccc;
+}
+
+.message {
+  max-width: 60%;
+  margin-bottom: 10px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  color: white;
+  font-size: 16px;
+  line-height: 20px;
+  word-wrap: break-word;
+}
+
+.sent {
+  align-self: flex-end;
+  background-color: #4caf50; /* Green background for sent messages */
+  display: none;
+}
+
+.received {
+  align-self: flex-start;
+  background-color: #34b7f1; /* Blue background for received messages */
+  display: none;
+}
