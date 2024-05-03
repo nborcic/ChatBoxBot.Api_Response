@@ -11,16 +11,13 @@ function sendMessage() {
     const rightDiv = document.getElementById('rightDisp');
     const createP = document.createElement('p.1');
     createP.style.fontSize = '40px';
-    const combinedMessage = createP.innerHTML = `{
-        <div class="">
-        }`;
+    const combinedMessage = createP.innerHTML = message;
     leftDiv.appendChild(createP);
     input.value = '';
 }
 
 document.addEventListener('keydown', function (event) {
     if (event.key === 'Enter') {
-
         sendMessage();
     }
 
