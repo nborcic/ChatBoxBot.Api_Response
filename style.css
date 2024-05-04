@@ -101,7 +101,10 @@ body {
   height: 40px;
   width: 40px;
 }
-
+.alienHead:hover{
+  background-color: transparent;
+  scale: 1.1;
+}
 .biggText {
   display: flex;
   justify-content: center;
