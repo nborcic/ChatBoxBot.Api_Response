@@ -60,23 +60,6 @@ body {
   box-sizing: border-box;
   outline: none;
 }
-.custom-search-botton {
-  position: absolute;
-  right: 3px;
-  top: 0px;
-  bottom: 0px;
-  border: 0;
-  background: #200c79;
-  color: #fff;
-  outline: none;
-  margin: 0;
-  padding: 10px 10px;
-  border-radius: 100px;
-  z-index: 2;
-  width: 120px;
-  height: 70px;
-  font-size: 25px;
-}
 
 .sideBarContact {
   display: flex;
@@ -101,7 +84,7 @@ body {
   height: 40px;
   width: 40px;
 }
-.alienHead:hover{
+.alienHead:hover {
   background-color: transparent;
   scale: 1.1;
 }
@@ -205,17 +188,23 @@ body {
   padding: 8px 10px;
   border-radius: 10px;
   color: white;
-  font-size: 16px;
-  line-height: 20px;
+  font-size: 30px;
+  line-height: 30px;
   word-wrap: break-word;
+  
 }
 
 .sent {
   align-self: flex-end;
-  background-color: #4caf50;
+  justify-content: center;
+  background-color: #00cb44;
+  color: rgb(3, 1, 1);
+  margin-right: 10px;
+  margin-left: 100px;
+  margin-bottom: 10px;
 }
 
 .received {
   align-self: flex-start;
-  background-color: #34b7f1;
+  background-color: #ffffff;
 }
