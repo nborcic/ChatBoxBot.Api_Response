@@ -191,7 +191,6 @@ body {
   font-size: 30px;
   line-height: 30px;
   word-wrap: break-word;
-  
 }
 
 .sent {
@@ -207,4 +206,5 @@ body {
 .received {
   align-self: flex-start;
   background-color: #ffffff;
+  color: rgb(3, 1, 1);
 }
