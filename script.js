@@ -2,22 +2,16 @@
 //leftDisp- 
 //rightDisp
 
-//count messages in leftDisp and rightDisp
-//store messages in local storage
-//display messages apon refresh
-
-//create messages for the contacts in the left
-//display the messages of contacts apon click on the contact
-
-
-
-
+let chatHistory = localStorage.getItem('chatHistory') || [];
 let inputElement = document.querySelector('#input');
+let messages = [];
+function saveMessages() {
+    const saveMessage = localStorage.setItem('Message', chatHistory);
+}
 
 document.addEventListener('keydown', function (event) {
     if (event.key === 'Enter') {
         sendMessage();
-
     }
 })
 document.addEventListener('keydown', function (event) {
@@ -25,19 +19,62 @@ document.addEventListener('keydown', function (event) {
         receiveMessage();
     }
 })
+//create a list of objects to add messages to
+let messageListS1 = [{ fastaadsad: sent }, { fasfasfa: received }];
+
+function createMessage(message, type) {
+    messageListS1.push({ message, type });
+    message = messageListS1[messageListS1.length - 1].message;
+
+    type = messageListS1[messageListS1.length - 1].type;
+
+    return {
+        message: message,
+        id: id,
+        type: type
+
+    }
+}
+document.getElementById('s1').addEventListener('click', function () {
+    console.log('s1');
+    //displayChatHistory(); for this constact
+});
+document.getElementById('s2').addEventListener('click', function () {
+    console.log('s2');
+});
+document.getElementById('s3').addEventListener('click', function () {
+    console.log('s3');
+});
+
 function sendMessage() {
     if (inputElement.value.trim() !== '') {
         const inputElement = document.querySelector('#input');
         let message = inputElement.value;
         const bubble = document.createElement('div');
         bubble.classList.add('message', 'sent');
-        const rightDiv = document.getElementById('rightDisp');
+        const rightDiv = document.getElementById('chatDiv');
         bubble.textContent = message;
         rightDiv.appendChild(bubble);
+        localStorage.setItem('Messages', message);
+        createMessage(message, 'sent');
         input.value = '';
     }
-
 }
+
+
+function displayChatHistory() {
+    const chatBox = document.getElementById('chatDiv');
+    chatBox.innerHTML = '';
+    chatHistory.forEach(message => {
+
+        const div = document.createElement('div');
+        div.textContent = message;
+        chatBox.appendChild(div);
+    });
+}
+
+displayChatHistory();
+
 const url = 'https://api.quotable.io/random';
 async function receiveMessage() {
     const response = await fetch(url);
@@ -49,34 +86,19 @@ async function receiveMessage() {
     const bubble = document.createElement('div');
     bubble.classList.add('message', 'received');
     bubble.appendChild(pTag);
-    console.log(bubble);
-    const leftDiv = document.getElementById('leftDisp');
+    const leftDiv = document.getElementById('chatDiv');
     leftDiv.appendChild(bubble);
     input.value = '';
-
-
-
 }
 
-// function displayMessages() {
-//     const display = document.getElementById('chatDisplay');
-//     display.innerHTML = '';
-//     for (let msg of messages) {
-//         if (msg.content.trim() !== "") {
-//             const messageDiv = document.createElement('div');
-//             messageDiv.className = 'message ' + msg.type;
-//             const messageText = document.createElement('p');
-//             messageText.textContent = msg.content;
-//             messageDiv.appendChild(messageText);
-//             display.appendChild(messageDiv);
-            
 
-//             //localStorage.setItem('messages', JSON.stringify(messages));
-//         }
-//     }
-//     display.scrollTop = display.scrollHeight;
-// }
 
+
+
+
+
+
+// MOBILE VIEW
 
 //functionalities for future
 // Form validation: Adding form validation to a web form can help ensure that users enter the correct information and improve the user experience.
@@ -92,7 +114,3 @@ async function receiveMessage() {
 // Live search: Adding a live search functionality can help users quickly find the information they need without having to navigate through multiple pages.
 // Infinite scrolling: Infinite scrolling can be used to automatically load more content as the user scrolls down the page.
 // Video and audio players: You can add custom video and audio players to your website to provide a better user experience for multimedia content.
-
-
-
-

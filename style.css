@@ -107,20 +107,12 @@ body {
   background-image: url("/Assets/whatsup-white.png");
   flex-direction: row;
 }
-.leftDisplay {
+.chatDiv {
   display: flex;
   justify-content: flex-end;
   flex-direction: column;
   padding: 25px;
   flex: 1;
-}
-.rightDisplay {
-  display: flex;
-  flex: 1;
-  justify-content: flex-end;
-  align-items: flex-end;
-  flex-direction: column;
-  padding: 25px;
 }
 
 .navTop {
@@ -188,9 +180,10 @@ body {
   padding: 8px 10px;
   border-radius: 10px;
   color: white;
-  font-size: 30px;
+  font-size: 20px;
   line-height: 30px;
   word-wrap: break-word;
+  font-family: work sans;
 }
 
 .sent {
