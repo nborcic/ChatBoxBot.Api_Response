@@ -2,11 +2,12 @@
 //leftDisp- 
 //rightDisp
 
-let chatHistory = localStorage.getItem('chatHistory') || [];
 let inputElement = document.querySelector('#input');
 let messages = [];
-function saveMessages() {
-    const saveMessage = localStorage.setItem('Message', chatHistory);
+
+function saveMessages4S1() {
+    // Function to save messages for S1
+    const saveMessage = localStorage.setItem('Message', JSON.stringify(messageListS1));
 }
 
 document.addEventListener('keydown', function (event) {
@@ -19,65 +20,75 @@ document.addEventListener('keydown', function (event) {
         receiveMessage();
     }
 })
-//create a list of objects to add messages to
-let messageListS1 = [{ fastaadsad: sent }, { fasfasfa: received }];
 
-function createMessage(message, type) {
+let messageListS1 = [
+    { message: "this is my first", type: "sent" },
+    { message: "this one i recieved", type: "received" }
+] || [];
+localStorage.setItem('MessagesS1', JSON.stringify(messageListS1));
+
+function createMessageS1(message, type) {
+    // Function to create a message for S1
     messageListS1.push({ message, type });
-    message = messageListS1[messageListS1.length - 1].message;
-
-    type = messageListS1[messageListS1.length - 1].type;
-
-    return {
-        message: message,
-        id: id,
-        type: type
-
-    }
+    localStorage.setItem('MessagesS1', JSON.stringify(messageListS1));
+    return {};
 }
+
 document.getElementById('s1').addEventListener('click', function () {
+    displayChatHistoryS1();
     console.log('s1');
-    //displayChatHistory(); for this constact
-});
+})
+
 document.getElementById('s2').addEventListener('click', function () {
     console.log('s2');
 });
-document.getElementById('s3').addEventListener('click', function () {
-    console.log('s3');
-});
 
 function sendMessage() {
+    // Function to send a message
     if (inputElement.value.trim() !== '') {
-        const inputElement = document.querySelector('#input');
         let message = inputElement.value;
         const bubble = document.createElement('div');
         bubble.classList.add('message', 'sent');
         const rightDiv = document.getElementById('chatDiv');
         bubble.textContent = message;
         rightDiv.appendChild(bubble);
-        localStorage.setItem('Messages', message);
-        createMessage(message, 'sent');
-        input.value = '';
+        createMessageS1(message, 'sent');
+        inputElement.value = '';
+        console.log(messageListS1);
     }
 }
 
+function displayChatHistoryS1() {
+    // Function to display chat history for S1
+    const chatDiv = document.getElementById('chatDiv');
+    chatDiv.innerHTML = ''; // Clear previous chat history
 
-function displayChatHistory() {
-    const chatBox = document.getElementById('chatDiv');
-    chatBox.innerHTML = '';
-    chatHistory.forEach(message => {
+    // Get messages from local storage
+    const getMess = localStorage.getItem('MessagesS1');
+    const parsedMessages = getMess ? JSON.parse(getMess) : [];
 
+    if (parsedMessages.length === 0) {
         const div = document.createElement('div');
-        div.textContent = message;
-        chatBox.appendChild(div);
+        div.style.textAlign = 'center';
+        div.textContent = 'No chat history';
+        chatDiv.appendChild(div);
+        return;
+    }
+
+    parsedMessages.forEach(message => {
+        const div = document.createElement('div');
+        div.textContent = `${message.message} - ${message.type}`;
+        chatDiv.appendChild(div);
+        div.classList.add('message', message.type);
     });
 }
 
-displayChatHistory();
+displayChatHistoryS1();
 
-const url = 'https://api.quotable.io/random';
+
 async function receiveMessage() {
-    const response = await fetch(url);
+    // Function to receive a message
+    const response = await fetch("https://api.quotable.io/random");
     const data = await response.json();
 
     const dataData = data.content + " - " + data.author;
@@ -88,29 +99,6 @@ async function receiveMessage() {
     bubble.appendChild(pTag);
     const leftDiv = document.getElementById('chatDiv');
     leftDiv.appendChild(bubble);
-    input.value = '';
+    createMessageS1(dataData, 'received');
+    inputElement.value = ''; // Corrected line
 }
-
-
-
-
-
-
-
-
-// MOBILE VIEW
-
-//functionalities for future
-// Form validation: Adding form validation to a web form can help ensure that users enter the correct information and improve the user experience.
-
-// Carousel/slider: You can add a carousel or slider to display images or content in a visually appealing way.
-// Lazy loading: Lazy loading is a technique that delays the loading of images or other resources until they are needed. This can help improve the speed and performance of a website.
-// Modal windows: Modal windows can be used to display additional information or content without requiring the user to navigate to a new page.
-
-// Drag-and-drop functionality: Adding drag-and-drop functionality can make it easier for users to upload files or rearrange content on a page.
-// Lightbox: A lightbox can be used to display images or other media in a larger view without navigating away from the current page.
-// Image gallery: An image gallery can be used to display multiple images in a grid or slideshow format.
-
-// Live search: Adding a live search functionality can help users quickly find the information they need without having to navigate through multiple pages.
-// Infinite scrolling: Infinite scrolling can be used to automatically load more content as the user scrolls down the page.
-// Video and audio players: You can add custom video and audio players to your website to provide a better user experience for multimedia content.
