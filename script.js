@@ -1,104 +1,73 @@
-//Path: script.js
-//leftDisp- 
-//rightDisp
-
+// Path: script.js
+// Elements and local storage initialization
 let inputElement = document.querySelector('#input');
-let messages = [];
+let chatDiv = document.getElementById('chatDiv');
+let messageListS1 = JSON.parse(localStorage.getItem('MessagesS1')) || [];
 
-function saveMessages4S1() {
-    // Function to save messages for S1
-    const saveMessage = localStorage.setItem('Message', JSON.stringify(messageListS1));
-}
-
+// sending and receiving messages
 document.addEventListener('keydown', function (event) {
     if (event.key === 'Enter') {
         sendMessage();
-    }
-})
-document.addEventListener('keydown', function (event) {
-    if (event.key === ' ') {
+    } else if (event.key === ' ') {
         receiveMessage();
     }
-})
-
-let messageListS1 = [
-    { message: "this is my first", type: "sent" },
-    { message: "this one i recieved", type: "received" }
-] || [];
-localStorage.setItem('MessagesS1', JSON.stringify(messageListS1));
-
-function createMessageS1(message, type) {
-    // Function to create a message for S1
-    messageListS1.push({ message, type });
-    localStorage.setItem('MessagesS1', JSON.stringify(messageListS1));
-    return {};
-}
-
-document.getElementById('s1').addEventListener('click', function () {
-    displayChatHistoryS1();
-    console.log('s1');
-})
-
+});
+//setting up the event listeners for corresponding buttons
+document.getElementById('s1').addEventListener('click', displayChatHistoryS1);
 document.getElementById('s2').addEventListener('click', function () {
-    console.log('s2');
+    console.log('s2 button clicked');
 });
 
-function sendMessage() {
-    // Function to send a message
-    if (inputElement.value.trim() !== '') {
-        let message = inputElement.value;
-        const bubble = document.createElement('div');
-        bubble.classList.add('message', 'sent');
-        const rightDiv = document.getElementById('chatDiv');
-        bubble.textContent = message;
-        rightDiv.appendChild(bubble);
-        createMessageS1(message, 'sent');
-        inputElement.value = '';
-        console.log(messageListS1);
-    }
-}
-
-function displayChatHistoryS1() {
-    // Function to display chat history for S1
-    const chatDiv = document.getElementById('chatDiv');
-    chatDiv.innerHTML = ''; // Clear previous chat history
-
-    // Get messages from local storage
-    const getMess = localStorage.getItem('MessagesS1');
-    const parsedMessages = getMess ? JSON.parse(getMess) : [];
-
-    if (parsedMessages.length === 0) {
-        const div = document.createElement('div');
-        div.style.textAlign = 'center';
-        div.textContent = 'No chat history';
-        chatDiv.appendChild(div);
-        return;
-    }
-
-    parsedMessages.forEach(message => {
-        const div = document.createElement('div');
-        div.textContent = `${message.message} - ${message.type}`;
-        chatDiv.appendChild(div);
-        div.classList.add('message', message.type);
-    });
-}
-
+// Initialize chat history on Page load for S1
 displayChatHistoryS1();
 
+// Create and store a message for S1
+function createMessageS1(message, type) {
+    // Create and store a message
+    messageListS1.push({ message, type });
+    localStorage.setItem('MessagesS1', JSON.stringify(messageListS1));
+}
 
+// Send a message and display it for S1
+function sendMessage() {
+
+    let messageText = inputElement.value.trim();
+    if (messageText) {
+        displayMessage(messageText, 'sent');
+        createMessageS1(messageText, 'sent');
+        inputElement.value = '';
+    }
+}
+//api call to receive messages, simulate receiving messages
 async function receiveMessage() {
-    // Function to receive a message
+
     const response = await fetch("https://api.quotable.io/random");
     const data = await response.json();
+    let receivedText = `${data.content} - ${data.author}`;
+    displayMessage(receivedText, 'received');
+    createMessageS1(receivedText, 'received');
+}
 
-    const dataData = data.content + " - " + data.author;
-    const pTag = document.createElement('p');
-    pTag.textContent = dataData;
-    const bubble = document.createElement('div');
-    bubble.classList.add('message', 'received');
-    bubble.appendChild(pTag);
-    const leftDiv = document.getElementById('chatDiv');
-    leftDiv.appendChild(bubble);
-    createMessageS1(dataData, 'received');
-    inputElement.value = ''; // Corrected line
+//displaying chat history for S1
+function displayChatHistoryS1() {
+
+    chatDiv.innerHTML = '';
+    //for testing purposes, clearing chat history
+     //localStorage.removeItem('MessagesS1');
+    
+    // checking if there is any chat history
+    if (messageListS1.length === 0) {
+        chatDiv.innerHTML = '<div style="text-align: center;">No chat history</div>';
+    } else {
+        messageListS1.forEach(({ message, type }) => displayMessage(message, type));
+    }
+}
+
+
+function displayMessage(message, type) {
+    // Helper function to display a message
+    const messageElement = document.createElement('div');
+    messageElement.textContent = message;
+    messageElement.classList.add('message', type);
+    chatDiv.appendChild(messageElement);
 }

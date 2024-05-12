@@ -6,21 +6,32 @@ body {
   align-items: center;
   background-color: #e3e3e3;
 }
+/* @media only screen and (max-width: 1920px) and (max-height: 1080px) {
+  body {
+    display: none;
+  }
+} */
+
 .chatArea {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 100%;
-  width: 70%;
+  height: 860px;
+
+  width: 920px;
   border-radius: 10px;
 }
-.chatDisplay {
-  display: flex;
 
+.chatDiv {
+  display: flex;
   flex-direction: column;
-  height: 100%;
-  width: 100%;
+  padding: 25px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  flex: 1;
+  min-height: 0;
 }
+
 .chatInput {
   display: flex;
   flex-direction: row;
@@ -106,6 +117,7 @@ body {
   flex: 1;
   background-image: url("/Assets/whatsup-white.png");
   flex-direction: row;
+  overflow-y: scroll;
 }
 .chatDiv {
   display: flex;
@@ -166,6 +178,7 @@ body {
 }
 
 .topToolTips {
+  
   display: flex;
   flex-direction: row;
   justify-content: center;
