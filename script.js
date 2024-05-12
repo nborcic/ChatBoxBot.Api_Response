@@ -36,6 +36,7 @@ function sendMessage() {
         displayMessage(messageText, 'sent');
         createMessageS1(messageText, 'sent');
         inputElement.value = '';
+        chatDiv.scrollTop = chatDiv.scrollHeight;
     }
 }
 //api call to receive messages, simulate receiving messages
@@ -46,6 +47,7 @@ async function receiveMessage() {
     let receivedText = `${data.content} - ${data.author}`;
     displayMessage(receivedText, 'received');
     createMessageS1(receivedText, 'received');
+    chatDiv.scrollTop = chatDiv.scrollHeight;
 }
 
 //displaying chat history for S1
@@ -53,8 +55,8 @@ function displayChatHistoryS1() {
 
     chatDiv.innerHTML = '';
     //for testing purposes, clearing chat history
-     //localStorage.removeItem('MessagesS1');
-    
+    //localStorage.removeItem('MessagesS1');
+
     // checking if there is any chat history
     if (messageListS1.length === 0) {
         chatDiv.innerHTML = '<div style="text-align: center;">No chat history</div>';

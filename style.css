@@ -117,14 +117,20 @@ body {
   flex: 1;
   background-image: url("/Assets/whatsup-white.png");
   flex-direction: row;
-  overflow-y: scroll;
+  overflow-y: auto;
+  overflow-x: hidden;
+  min-height: 0;
 }
 .chatDiv {
   display: flex;
-  justify-content: flex-end;
   flex-direction: column;
   padding: 25px;
+  overflow-y: auto;
+  overflow-x: hidden;
   flex: 1;
+  min-height: 0;
+  scrollbar-width: thin;
+  scrollbar-color: #6b6b6b #e0e0e0;
 }
 
 .navTop {
@@ -178,7 +184,6 @@ body {
 }
 
 .topToolTips {
-  
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -214,3 +219,8 @@ body {
   background-color: #ffffff;
   color: rgb(3, 1, 1);
 }
+
+
+
+
+
