@@ -73,3 +73,11 @@ function displayMessage(message, type) {
     messageElement.classList.add('message', type);
     chatDiv.appendChild(messageElement);
 }
+
+
+
+
+//messages have shape for sent and received
+//switch contact chats based on the button clicked
+// button work for search. icons, add file, record voice1
+//
