@@ -220,7 +220,12 @@ body {
   color: rgb(3, 1, 1);
 }
 
-
-
-
-
+.dayNight {
+  height: 50px;
+  width: auto;
+  border-radius: 20px;
+  margin: 0 auto;
+}
+.dayNight:hover {
+  transform: rotate(180deg);
+}

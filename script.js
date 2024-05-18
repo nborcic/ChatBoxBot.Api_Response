@@ -1,3 +1,5 @@
+
+
 // Path: script.js
 // Elements and local storage initialization
 let inputElement = document.querySelector('#input');
@@ -67,11 +69,13 @@ function displayChatHistoryS1() {
 
 
 function displayMessage(message, type) {
+    setTheme();
     // Helper function to display a message
     const messageElement = document.createElement('div');
     messageElement.textContent = message;
     messageElement.classList.add('message', type);
     chatDiv.appendChild(messageElement);
+
 }
 
 
@@ -80,4 +84,23 @@ function displayMessage(message, type) {
 //messages have shape for sent and received
 //switch contact chats based on the button clicked
 // button work for search. icons, add file, record voice1
-//
+
+
+
+function setTheme() {
+    const time = new Date();
+    //if its night time, set dark theme
+    if (time.getHours() >= 20 || time.getHours() < 8) {
+        document.body.style.backgroundColor = 'grey';
+        document.querySelector('.sideBarContact').style.backgroundColor = '#ccc';
+        document.querySelector('.contactsNav').style.color = 'white';
+        document.querySelector('.chatDiv').style.backgroundColor = '#ccc';
+        document.querySelector('.chatInput').style.backgroundColor = '#ccc';
+        document.querySelector('.contactsSideBar').style.backgroundColor = '#ccc';
+        document.querySelector('.contactsSideBar').children[2].style.backgroundColor = '#ccc';
+        document.querySelector('.contactsSideBar').children[3].style.backgroundColor = '#ccc';
+        document.querySelector('.contactsNav').style.backgroundColor = '#ccc';
+    }
+    console.log(time);
+}
+
