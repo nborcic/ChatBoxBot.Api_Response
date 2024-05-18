@@ -22,6 +22,8 @@ document.getElementById('s2').addEventListener('click', function () {
 
 // Initialize chat history on Page load for S1
 displayChatHistoryS1();
+//setts the theme based on the time of the day
+setTheme();
 
 // Create and store a message for S1
 function createMessageS1(message, type) {
@@ -69,7 +71,7 @@ function displayChatHistoryS1() {
 
 
 function displayMessage(message, type) {
-    setTheme();
+
     // Helper function to display a message
     const messageElement = document.createElement('div');
     messageElement.textContent = message;
@@ -104,3 +106,4 @@ function setTheme() {
     console.log(time);
 }
 
+setTheme();
