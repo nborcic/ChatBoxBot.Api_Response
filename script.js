@@ -89,7 +89,8 @@ function displayMessage(message, type) {
 
 
 
-function setTheme() {
+function setTheme(isNight) {
+
     const time = new Date();
     //if its night time, set dark theme
     if (time.getHours() >= 20 || time.getHours() < 8) {
@@ -106,4 +107,4 @@ function setTheme() {
     console.log(time);
 }
 
-setTheme();
+
