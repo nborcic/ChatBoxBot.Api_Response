@@ -89,11 +89,12 @@ function displayMessage(message, type) {
 
 
 
-function setTheme(isNight) {
+function setTheme() {
 
     const time = new Date();
+
     //if its night time, set dark theme
-    if (time.getHours() >= 20 || time.getHours() < 8) {
+    if (time.getHours() >= 21 || time.getHours() < 8) {
         document.body.style.backgroundColor = 'grey';
         document.querySelector('.sideBarContact').style.backgroundColor = '#ccc';
         document.querySelector('.contactsNav').style.color = 'white';

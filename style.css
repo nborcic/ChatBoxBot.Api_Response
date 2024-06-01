@@ -225,7 +225,5 @@ body {
   width: auto;
   border-radius: 20px;
   margin: 0 auto;
-}
-.dayNight:hover {
-  transform: rotate(180deg);
+  background-color: #c9cfd4;
 }
