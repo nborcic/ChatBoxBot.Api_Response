@@ -108,4 +108,21 @@ function setTheme() {
     console.log(time);
 }
 
+document.getElementById('theme-toggle').addEventListener('click', function () {
+    const body = document.body;
+    const sunIcon = document.getElementById('sun-icon');
+    const moonIcon = document.getElementById('moon-icon');
+    const chatDiv = document.getElementById('chatDiv');
 
+    if (body.classList.contains('theme-dark')) {
+        body.classList.remove('theme-dark');
+        sunIcon.style.display = 'inline-block';
+        chatDiv.style.background = 'url(Assets/whatsup-white.png)';
+        moonIcon.style.display = 'none';
+    } else {
+        body.classList.add('theme-dark');
+        sunIcon.style.display = 'none';
+        chatDiv.style.background = 'url(Assets/whats_back_black.JPG)';
+        moonIcon.style.display = 'inline-block';
+    }
+});

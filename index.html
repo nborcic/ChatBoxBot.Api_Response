@@ -20,14 +20,27 @@
     />
     <link rel="stylesheet" href="style.css" />
   </head>
-  <body>
+  <body class="theme-light">
     <div class="outSideWall">
       <div class="contactsSideBar" id="contactSideBar">
         <div class="contactsNav">
           <div class="navTop">
             <div class="navImg">
               <img src="/Assets/navImg.png" />
-              <img src="/Assets/day.night_circle.webp" class="dayNight" onclick="toggleTheme()"/>
+              <button id="theme-toggle">
+                <img
+                  id="sun-icon"
+                  src="/Assets/sun_icon_withoutbackground.webp"
+                  alt="sun for sun theme-toggle"
+                  style="width: 50px; height: 50px"
+                />
+                <img
+                  id="moon-icon"
+                  src="/Assets/moon_icon_backgroundremoved.webp"
+                  alt="moon for theme-toggle"
+                  style="width: 50px; height: 50px; display: none"
+                />
+              </button>
             </div>
             <div class="navIcons">
               <img src="/Assets/navBar_iconright.png" />
